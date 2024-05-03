@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { viewStyles } from '../../styling/stylesheet';
+import { viewStyles } from '../../../styling/stylesheet';
 import { View } from 'react-native';
 import { ListItem, Button, Text, Icon } from '@rneui/themed';
-import { saveShoppingListItem } from '../../databases/shoppinglistDB';
+import { saveShoppingListItem } from '../../../databases+apis/shoppinglistDB';
 
 export default function IndividualIngredient ({item}) {
     const [added, setAdded] = useState(false);

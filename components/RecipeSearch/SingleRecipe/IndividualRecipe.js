@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { View, ScrollView, Image } from 'react-native';
-import { fetchRepositories, getRecipeById } from './RecipeApiLinks';
+import { fetchRepositories, getRecipeById } from '../../../databases+apis/RecipeApiLinks';
 import IngredientsList from './IngredientsList';
 import StepsList from './StepsList';
-import { Button, Text } from '@rneui/themed';
-import SaveExistingRecipe from '../SaveExistingRecipe';
-import { viewStyles } from '../../styling/stylesheet';
+import { Button, Text, FAB } from '@rneui/themed';
+import SaveExistingRecipe from '../../SaveExistingRecipe';
+import { viewStyles } from '../../../styling/stylesheet';
 
 
-export default function IndividualRecipe({idMeal, navigation}) {
+export default function IndividualRecipe({ idMeal, navigation }) {
     const [recipeInfo, setRecipeInfo] = useState('');
 
     const fetchData = async () => {
@@ -25,14 +25,20 @@ export default function IndividualRecipe({idMeal, navigation}) {
         console.log(recipeInfo)
     }, [])
 
-    return(
+    return (
         <ScrollView>
-            <Button onPress={() => navigation.goBack()} title="Go back" />
             <View style={{ aspectRatio: 16 / 15 }}>
                 <Image
                     style={{ flex: 1, width: undefined, height: undefined }}
                     resizeMode="cover"
                     source={{ uri: recipeInfo.strMealThumb }}
+                />
+                <FAB
+                    // title="Go back"
+                    icon={{ name: 'arrow-back', color: 'white' }}
+                    onPress={() => navigation.goBack()}
+                    // buttonStyle={{ backgroundColor: 'transparent' }}
+                    style={{ position: 'absolute',  top: 5, left: 5, }}
                 />
             </View>
             <View style={viewStyles.rowView}>
@@ -40,7 +46,7 @@ export default function IndividualRecipe({idMeal, navigation}) {
                 <SaveExistingRecipe id={recipeInfo.idMeal} />
             </View>
             <IngredientsList recipeInfo={recipeInfo} />
-            <StepsList instructionsString={recipeInfo.strInstructions}/>
+            <StepsList instructionsString={recipeInfo.strInstructions} />
         </ScrollView>
     )
 }

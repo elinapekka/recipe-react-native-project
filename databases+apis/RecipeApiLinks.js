@@ -1,4 +1,4 @@
-const fetchRepositories = (link) => { 
+const fetchRepositories = (link) => {
     return fetch(link)
         .then(response => {
             if (!response.ok)
@@ -10,7 +10,7 @@ const fetchRepositories = (link) => {
         })
         .catch(err => {
             console.error(err);
-    });
+        });
 }
 
 const searchByKeyword = (keyword) => {
@@ -21,10 +21,18 @@ const searchByCategory = (keyword) => {
     return `https://www.themealdb.com/api/json/v1/1/filter.php?c=${keyword}`;
 }
 
+const searchByArea = (keyword) => {
+    return `https://www.themealdb.com/api/json/v1/1/filter.php?a=${keyword}`;
+}
+
 const getRecipeById = (idMeal) => {
-    return `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`; 
+    return `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
 }
 
 const getAllCategories = 'https://www.themealdb.com/api/json/v1/1/categories.php';
 
-export {fetchRepositories, searchByKeyword, searchByCategory, getRecipeById, getAllCategories};
+const getAllAreas = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list';
+
+const getRandomRecipe = 'https://www.themealdb.com/api/json/v1/1/random.php';
+
+export { fetchRepositories, searchByKeyword, searchByCategory, searchByArea, getRecipeById, getAllCategories, getAllAreas, getRandomRecipe };

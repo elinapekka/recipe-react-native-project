@@ -59,14 +59,6 @@ const theme = createTheme({
     },
 
     SearchBar: { // https://reactnativeelements.com/docs/components/searchbar
-      containerStyle: {
-        backgroundColor: colors.secondary,
-        margin: 0,
-      },
-      inputContainerStyle: {
-        backgroundColor: colors.primary,
-        margin: 0,
-      },
       inputStyle: {
         color: colors.textColor,
       },
@@ -81,6 +73,14 @@ const theme = createTheme({
         color: colors.iconColor,
       },
     },
+    FAB: {
+      buttonStyle: {
+        backgroundColor: '#EDB41F'
+      },
+    },
+    Button: {
+      color: '#60AC98'
+    }
   },
 });
 

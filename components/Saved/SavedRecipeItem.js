@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getRecipeById, fetchRepositories } from "../RecipeSearch/RecipeApiLinks";
+import { getRecipeById, fetchRepositories } from "../../databases+apis/RecipeApiLinks";
 import RecipeCard from '../RecipeSearch/RecipeCard';
 
 export default function SavedRecipeItem({itemId, openRecipe, update}) {

@@ -1,11 +1,10 @@
-import { View, Text } from 'react-native';
-import RecipeCategoryWheel from '../components/Home/RecipeCategoryWheel';
+import { View } from 'react-native';
+import Home from '../components/Home/Home';
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
     return (
         <View>
-            <RecipeCategoryWheel />
-            <Text>This is HomeScreen</Text>
+            <Home navigation={navigation}/>
         </View>
     );
 };

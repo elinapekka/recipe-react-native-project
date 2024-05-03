@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Dialog, Input } from '@rneui/themed';
-import { saveShoppingListItem } from '../../databases/shoppinglistDB';
+import { saveShoppingListItem } from '../../databases+apis/shoppinglistDB';
 
 
 export default function AddShoppingListItem({updateShoppingList}) {

@@ -1,16 +1,21 @@
 import { Button } from '@rneui/themed';
 import { View, ScrollView, Text } from 'react-native';
 import { useEffect, useState } from 'react';
-import { fetchRepositories, searchByCategory } from './RecipeApiLinks';
 import RecipeCard from './RecipeCard';
+import { fetchRepositories, searchByCategory, searchByArea } from '../../databases+apis/RecipeApiLinks';
 
-export default function SearchResult({keyword, navigation}) {
+export default function SearchResult({ searchMethod, searchCriteria, navigation }) {
     const [meals, setMeals] = useState([]);
 
     const fetchData = async () => {
         try {
-            const data = await fetchRepositories(searchByCategory(keyword));
-            setMeals(data.meals);
+            if (searchMethod === 'category') {
+                const data = await fetchRepositories(searchByCategory(searchCriteria));
+                setMeals(data.meals);
+            } else if (searchMethod === 'area') {
+                const data = await fetchRepositories(searchByArea(searchCriteria));
+                setMeals(data.meals)
+            }
         } catch (error) {
             console.error(error);
         }
@@ -23,12 +28,12 @@ export default function SearchResult({keyword, navigation}) {
     const openRecipe = (idMeal) => {
         return () => {
             console.log(idMeal)
-            navigation.navigate('SelectedRecipe', {idMeal: idMeal});
+            navigation.navigate('SelectedRecipe', { idMeal: idMeal });
         };
     }
 
     if (!meals) {
-        return(
+        return (
             <View>
                 <Text>No search results found</Text>
             </View>

@@ -1,11 +1,9 @@
-import { Card, Button, Text } from '@rneui/themed';
-import { View, ScrollView } from 'react-native';
 import { useEffect, useState } from 'react';
-import SearchBarComponent from '../SearchBarComponent';
-import { TouchableOpacity } from 'react-native';
-import { fetchRepositories, getAllCategories } from '../../databases+apis/RecipeApiLinks';
+import { View, ScrollView, TouchableOpacity } from 'react-native';
+import { Card, Button, Text } from '@rneui/themed';
+import { fetchRepositories, getAllCategories } from '../../../databases+apis/RecipeApiLinks';
 
-function RecipeKeywordList({navigation}) {
+export default function SearchCategory({ navigation }) {
     const [keywordList, setKeywordList] = useState([]);
 
     useEffect(() => {
@@ -21,7 +19,7 @@ function RecipeKeywordList({navigation}) {
         fetchData();
     }, []);
 
-    if(!keywordList) {
+    if (!keywordList) {
         return (
             <View>
                 <Text>No recipes found.</Text>
@@ -30,11 +28,10 @@ function RecipeKeywordList({navigation}) {
     } else {
         return (
             <ScrollView>
-                <SearchBarComponent />
                 <View>
                     {
                         keywordList.map((l, i) => (
-                            <TouchableOpacity key={i} onPress={() => navigation.navigate('SearchResult', { keyword: l.strCategory })}>
+                            <TouchableOpacity key={i} onPress={() => navigation.navigate('SearchResult', { searchMethod: 'category', searchCriteria: l.strCategory })}>
                                 <Card>
                                     <Card.Title h2>{l.strCategory}</Card.Title>
                                 </Card>
@@ -46,5 +43,3 @@ function RecipeKeywordList({navigation}) {
         )
     }
 };
-
-export {RecipeKeywordList};

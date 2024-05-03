@@ -1,12 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
 import { ListItem, Button, CheckBox } from '@rneui/themed';
 import { View, ScrollView, Text } from 'react-native';
-import { updateShoppingList, deleteShoppingListItem, editShoppingListItem, deleteAllShoppingListItems } from '../../databases/shoppinglistDB';
+import { updateShoppingList, deleteShoppingListItem, editShoppingListItem, deleteAllShoppingListItems } from '../../databases+apis/shoppinglistDB';
 import AddShoppingListItem from './AddShoppingListItem';
 import EditShoppingListItem from './EditShoppingListItem';
 import { useFocusEffect } from '@react-navigation/native';
-import ConfirmationMessage from '../ConfirmationMessage';
-
 
 export default function ShoppingList() {
 

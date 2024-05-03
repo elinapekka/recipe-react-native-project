@@ -1,7 +1,7 @@
 import { ScrollView, View } from "react-native";
 import { Button, Text } from "@rneui/themed";
 import { useState, useCallback } from 'react';
-import { updateSavedRecipes } from "../../databases/savedRecipesDB";
+import { updateSavedRecipes } from "../../databases+apis/savedRecipesDB";
 import SavedRecipeItem from "./SavedRecipeItem";
 import { useFocusEffect } from '@react-navigation/native';
 

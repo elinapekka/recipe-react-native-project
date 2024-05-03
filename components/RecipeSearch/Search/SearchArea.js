@@ -1,18 +1,16 @@
-import { Card, Button, Text } from '@rneui/themed';
-import { View, ScrollView } from 'react-native';
 import { useEffect, useState } from 'react';
-import SearchBarComponent from '../SearchBarComponent';
-import { TouchableOpacity } from 'react-native';
-import { fetchRepositories, getAllCategories } from '../../databases+apis/RecipeApiLinks';
+import { View, ScrollView, TouchableOpacity } from 'react-native';
+import { Card, Button, Text } from '@rneui/themed';
+import { fetchRepositories, getAllAreas } from '../../../databases+apis/RecipeApiLinks';
 
-function RecipeKeywordList({navigation}) {
+export default function SearchArea({navigation}) {
     const [keywordList, setKeywordList] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await fetchRepositories(getAllCategories);
-                setKeywordList(data.categories);
+                const data = await fetchRepositories(getAllAreas);
+                setKeywordList(data.meals);
             } catch (error) {
                 console.error(error);
             }
@@ -21,7 +19,7 @@ function RecipeKeywordList({navigation}) {
         fetchData();
     }, []);
 
-    if(!keywordList) {
+    if (!keywordList) {
         return (
             <View>
                 <Text>No recipes found.</Text>
@@ -30,13 +28,12 @@ function RecipeKeywordList({navigation}) {
     } else {
         return (
             <ScrollView>
-                <SearchBarComponent />
                 <View>
                     {
                         keywordList.map((l, i) => (
-                            <TouchableOpacity key={i} onPress={() => navigation.navigate('SearchResult', { keyword: l.strCategory })}>
+                            <TouchableOpacity key={i} onPress={() => navigation.navigate('SearchResult', { searchMethod: 'area', searchCriteria: l.strArea })}>
                                 <Card>
-                                    <Card.Title h2>{l.strCategory}</Card.Title>
+                                    <Card.Title h2>{l.strArea}</Card.Title>
                                 </Card>
                             </TouchableOpacity>
                         ))
@@ -46,5 +43,3 @@ function RecipeKeywordList({navigation}) {
         )
     }
 };
-
-export {RecipeKeywordList};

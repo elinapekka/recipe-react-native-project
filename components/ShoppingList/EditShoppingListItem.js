@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Dialog, Input } from '@rneui/themed';
-import { editShoppingListItem } from '../../databases/shoppinglistDB';
+import { editShoppingListItem } from '../../databases+apis/shoppinglistDB';
 
 
 export default function EditShoppingListItem({update, itemInfo, reset}) {

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { View } from 'react-native';
 import { ListItem, Button, Text, Icon } from '@rneui/themed';
-import { saveShoppingListItem } from '../../databases/shoppinglistDB';
-import { viewStyles } from '../../styling/stylesheet';
+import { saveShoppingListItem } from '../../../databases+apis/shoppinglistDB';
+import { viewStyles } from '../../../styling/stylesheet';
 import IndividualIngredient from './IndividualIngredient';
 
 export default function IngredientsList({ recipeInfo }) {
