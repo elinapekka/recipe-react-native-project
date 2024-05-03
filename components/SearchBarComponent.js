@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SearchBar } from '@rneui/themed';
 import { View } from 'react-native';
 
@@ -6,15 +6,13 @@ export default function SearchBarComponent() {
 
   const [search, setSearch] = useState('');
 
-  const updateSearch = (search) => {
-    setSearch(search);
-  };
-
+  useEffect(() => { console.log(search) }, [search])
+  
   return (
     <View>
       <SearchBar
         placeholder="Type Here..."
-        onChangeText={updateSearch}
+        onChangeText={(value) => setSearch(value)}
         value={search}
       />
     </View>

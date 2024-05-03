@@ -39,6 +39,7 @@ export default function SaveExistingRecipe({ id }) {
 
     return (
         <CheckBox
+            containerStyle ={{backgroundColor: 'transparent', padding: 0}}
             checked={alreadySaved}
             checkedIcon="heart"
             uncheckedIcon="heart-o"

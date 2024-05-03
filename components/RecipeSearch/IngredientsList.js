@@ -5,7 +5,7 @@ import { saveShoppingListItem } from '../../databases/shoppinglistDB';
 import { viewStyles } from '../../styling/stylesheet';
 import IndividualIngredient from './IndividualIngredient';
 
-export default function IngredientsList({recipeInfo}) {
+export default function IngredientsList({ recipeInfo }) {
     const [ingredients, setIngredients] = useState([]);
 
     const getIngredientsAndMeasurements = () => {
@@ -20,7 +20,7 @@ export default function IngredientsList({recipeInfo}) {
                     measurement: recipeInfo[`strMeasure${i}`],
                 });
             } else {
-                    break;
+                break;
             }
         }
         setIngredients(tempIngredients);
@@ -38,11 +38,11 @@ export default function IngredientsList({recipeInfo}) {
         getIngredientsAndMeasurements();
     }, [recipeInfo]);
 
-    return ( 
+    return (
         <View>
             <View style={viewStyles.rowView}>
                 <Text h2>Ingredients</Text>
-                <Text style={{marginLeft: 'auto', marginRight: 5, width: '25%', textAlign: 'center'}}>add to shopping list</Text>
+                <Text style={{ marginLeft: 'auto', marginRight: 5, width: '25%', textAlign: 'center' }}>Add to Shopping List</Text>
             </View>
             {
                 ingredients.map((l, i) => (

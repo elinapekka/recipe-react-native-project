@@ -10,7 +10,7 @@ export default function RecipeCard({ recipe, openRecipe }) {
             <Card>
                 <View style={{ aspectRatio: 16 / 9 }}>
                     <Image
-                        style={{ flex: 1, width: undefined, height: undefined }}
+                        style={{ flex: 1, width: undefined, height: undefined, marginBottom: 10 }}
                         resizeMode="cover"
                         source={{ uri: recipe.strMealThumb }}
                     />
