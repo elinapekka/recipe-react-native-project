@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { View, ScrollView, TouchableOpacity } from 'react-native';
-import { Card, Button, Text } from '@rneui/themed';
+import { View, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { Card, Button, Text, FAB, Header } from '@rneui/themed';
 import { fetchRepositories, getAllCategories } from '../../../databases+apis/RecipeApiLinks';
+import { viewStyles } from '../../../styling/stylesheet';
 
 export default function SearchCategory({ navigation }) {
     const [keywordList, setKeywordList] = useState([]);
@@ -28,12 +29,20 @@ export default function SearchCategory({ navigation }) {
     } else {
         return (
             <ScrollView>
+                <Button  icon={{ name: 'arrow-back', color: 'white' }} onPress={() => navigation.goBack()} title="Go back" />
                 <View>
                     {
                         keywordList.map((l, i) => (
                             <TouchableOpacity key={i} onPress={() => navigation.navigate('SearchResult', { searchMethod: 'category', searchCriteria: l.strCategory })}>
                                 <Card>
-                                    <Card.Title h2>{l.strCategory}</Card.Title>
+                                    <View style={viewStyles.rowView}>
+                                        <Card.Title h3>{l.strCategory}</Card.Title>
+                                        <Image
+                                            style={{ width: 170, height: 110, marginLeft: 'auto' }}
+                                            resizeMode="cover"
+                                            source={{ uri: l.strCategoryThumb }}
+                                        />
+                                    </View>
                                 </Card>
                             </TouchableOpacity>
                         ))

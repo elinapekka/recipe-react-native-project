@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Dialog, Input } from '@rneui/themed';
+import { Button, Dialog, Input, Icon } from '@rneui/themed';
 import { saveShoppingListItem } from '../../databases+apis/shoppinglistDB';
 
 
@@ -31,9 +31,12 @@ export default function AddShoppingListItem({updateShoppingList}) {
     return ( 
         <>
             <Button 
-                title="Add"
+                //style={{width: 100}}
                 onPress={openDialog}
-            />
+            >
+                <Icon name="add" color="white" />
+                Add
+            </Button>
             <Dialog
                 isVisible={dialogVisible}
                 onBackdropPress={closeDialog}

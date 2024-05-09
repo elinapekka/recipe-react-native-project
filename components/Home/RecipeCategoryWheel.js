@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { ScrollView, View, Image } from "react-native";
 import { TouchableOpacity } from 'react-native';
-import { Card } from "@rneui/themed";
+import { Card, Text } from "@rneui/themed";
 import { fetchRepositories, getAllCategories } from "../../databases+apis/RecipeApiLinks";
 
 export default function RecipeCategoryWheel({ navigation }) {

@@ -28,12 +28,13 @@ export default function SearchArea({navigation}) {
     } else {
         return (
             <ScrollView>
+                <Button icon={{ name: 'arrow-back', color: 'white' }} onPress={() => navigation.goBack()} title="Go back" />
                 <View>
                     {
                         keywordList.map((l, i) => (
                             <TouchableOpacity key={i} onPress={() => navigation.navigate('SearchResult', { searchMethod: 'area', searchCriteria: l.strArea })}>
                                 <Card>
-                                    <Card.Title h2>{l.strArea}</Card.Title>
+                                    <Card.Title h3>{l.strArea}</Card.Title>
                                 </Card>
                             </TouchableOpacity>
                         ))

@@ -1,10 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
-import { ListItem, Button, CheckBox } from '@rneui/themed';
-import { View, ScrollView, Text } from 'react-native';
+import { ListItem, Button, CheckBox, FAB, Icon } from '@rneui/themed';
+import { View, ScrollView, Text, Dimensions } from 'react-native';
 import { updateShoppingList, deleteShoppingListItem, editShoppingListItem, deleteAllShoppingListItems } from '../../databases+apis/shoppinglistDB';
 import AddShoppingListItem from './AddShoppingListItem';
 import EditShoppingListItem from './EditShoppingListItem';
 import { useFocusEffect } from '@react-navigation/native';
+import { viewStyles } from '../../styling/stylesheet';
+import DeleteAllShoppingListItems from './DeleteAllShoppingListItems';
 
 export default function ShoppingList() {
 
@@ -24,11 +26,12 @@ export default function ShoppingList() {
     const toggleCheckbox = (l) => {
         return () => {
             editShoppingListItem({
-                id: l.id, 
-                item: l.item, 
-                amount: l.amount, 
-                checked: l.checked === 1 ? false : true, 
-                price: l.price});
+                id: l.id,
+                item: l.item,
+                amount: l.amount,
+                checked: l.checked === 1 ? false : true,
+                price: l.price
+            });
             update();
         };
     };
@@ -41,8 +44,8 @@ export default function ShoppingList() {
 
     const getAmountOfCheckedItems = () => {
         let checkedItem = 0;
-        shoppingList.forEach((l) => l.checked === 1 ? checkedItem++ : null );
-        setCheckedItemsAmount(checkedItem);    
+        shoppingList.forEach((l) => l.checked === 1 ? checkedItem++ : null);
+        setCheckedItemsAmount(checkedItem);
     }
 
     const deleteAllItems = () => {
@@ -61,33 +64,41 @@ export default function ShoppingList() {
         getTotalPrice();
     }, [shoppingList]);
 
-    return ( 
+
+    return (
         <ScrollView>
-            <Button 
-                title="Refresh"
-                onPress={update}
-            />
-            <Button 
-                title="Reset"
-                onPress={deleteAllItems}
-            />
-            <AddShoppingListItem updateShoppingList={update} />
-            <View>
-                <Text>Checked items: {checkedItemsAmount} / {shoppingList.length}</Text>
-                <Text>Total price: {totalPrice} €</Text>
+            <View style={viewStyles.rowView}>
+                <View>
+                    <Text>Checked items: {checkedItemsAmount} / {shoppingList.length}</Text>
+                    <Text>Total price: {totalPrice} €</Text>
+                </View>
+                <View style={{ marginLeft: 'auto', }}>
+                    <Button
+                        onPress={() => update()}
+                        buttonStyle={{ backgroundColor: '#EDB41F' }}
+                        //style={{width: '50%'}}
+                    >
+                        <Icon name="refresh" color="white" />
+                        Refresh
+                    </Button>
+                    
+                    <DeleteAllShoppingListItems deleteAllItems={deleteAllItems} />
+                </View>
+
             </View>
+            <AddShoppingListItem updateShoppingList={update} />
             <View>
                 {
                     shoppingList.map((l, i) => (
-                        <ListItem.Swipeable 
+                        <ListItem.Swipeable
                             leftContent={(reset) => (
-                                <EditShoppingListItem 
-                                    update={update} 
+                                <EditShoppingListItem
+                                    update={update}
                                     itemInfo={l}
                                     reset={reset}
                                 />
                             )}
-                            
+
                             rightContent={(reset) => (
                                 <Button
                                     title="Delete"
@@ -96,16 +107,16 @@ export default function ShoppingList() {
                                         reset();
                                     }}
                                     icon={{ name: 'delete', color: 'white' }}
-                                    buttonStyle={{ 
-                                        minHeight: '100%', width: '100%', backgroundColor: 'red' 
+                                    buttonStyle={{
+                                        minHeight: '100%', width: '100%', backgroundColor: 'red'
                                     }}
                                 />
                             )}
-                            key={i} 
+                            key={i}
                             bottomDivider
                         >
                             <ListItem.Content>
-                                <View style={{flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+                                <View style={{ flexDirection: 'row', width: '100%', alignItems: 'center' }}>
                                     <CheckBox
                                         checked={l.checked === 1 ? true : false}
                                         onPress={toggleCheckbox(l)}
@@ -113,20 +124,19 @@ export default function ShoppingList() {
                                         checkedIcon="checkbox-outline"
                                         uncheckedIcon={'checkbox-blank-outline'}
                                     />
-                                    <View style={{marginRight: 'auto'}}>
+                                    <View style={{ marginRight: 'auto' }}>
                                         <ListItem.Title>
                                             {l.amount ? `${l.amount} ${l.item}` : l.item}
                                         </ListItem.Title>
                                         <ListItem.Subtitle>{l.price.toFixed(2)}€</ListItem.Subtitle>
                                     </View>
-                                    
+
                                 </View>
                             </ListItem.Content>
                         </ListItem.Swipeable>
                     ))
                 }
             </View>
-        </ScrollView>
-    
+        </ScrollView >
     )
 };

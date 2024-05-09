@@ -41,7 +41,7 @@ export default function SearchResult({ searchMethod, searchCriteria, navigation 
     } else {
         return (
             <ScrollView>
-                <Button onPress={() => navigation.goBack()} title="Go back" />
+                <Button icon={{ name: 'arrow-back', color: 'white' }} onPress={() => navigation.goBack()} title="Go back" />
                 <View>
                     {
                         meals.map((l, i) => (

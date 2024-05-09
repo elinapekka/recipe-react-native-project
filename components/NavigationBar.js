@@ -17,6 +17,7 @@ function HomeStack() {
       <Stack.Screen name="HomeScreen" options={{ headerShown: false }} component={HomeScreen} />
       <Stack.Screen name="SelectedRecipeHome" options={{ headerShown: false }} component={SelectedRecipeScreen} />
       <Stack.Screen name="CategoryResultHome" options={{ headerShown: false }} component={SearchResult} />
+      <Stack.Screen name="ShoppingListHome" options={{ headerShown: false }} component={ShoppingListScreen} />
     </Stack.Navigator>
   )
 }

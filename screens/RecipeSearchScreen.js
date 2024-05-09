@@ -1,5 +1,4 @@
 import { View } from 'react-native';
-import { RecipeKeywordList } from '../components/RecipeSearch/RecipeKeywordList';
 import SearchResult from '../components/RecipeSearch/SearchResults';
 import IndividualRecipe from '../components/RecipeSearch/SingleRecipe/IndividualRecipe';
 import SearchPick from '../components/RecipeSearch/Search/SearchPick';

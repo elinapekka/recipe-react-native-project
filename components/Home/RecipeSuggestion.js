@@ -2,7 +2,7 @@ import { fetchRepositories, getRandomRecipe } from "../../databases+apis/RecipeA
 import { View, Image, TouchableOpacity } from "react-native";
 import { Text, FAB } from "@rneui/themed";
 import { useEffect, useState } from "react";
-import { LinearGradient } from 'expo-linear-gradient'; // Import LinearGradient from expo-linear-gradient
+import { LinearGradient } from 'expo-linear-gradient'; 
 
 
 export default function RecipeSuggestion({ navigation }) {
@@ -29,7 +29,7 @@ export default function RecipeSuggestion({ navigation }) {
     return (
         <TouchableOpacity onPress={() => navigation.navigate('SelectedRecipeHome', { idMeal: randomRecipe.idMeal })}>
             <View>
-                <View style={{ aspectRatio: 15 / 18 }}>
+                <View style={{ aspectRatio: 15 / 20 }}>
                     <Image
                         style={{ flex: 1, width: undefined, height: undefined }}
                         resizeMode="cover"
@@ -46,10 +46,8 @@ export default function RecipeSuggestion({ navigation }) {
                         }}
                     />
                     <FAB
-                        // title="Go back"
                         icon={{ name: 'refresh', color: 'white' }}
                         onPress={() => refresh()}
-                        // buttonStyle={{ backgroundColor: 'transparent' }}
                         style={{ position: 'absolute', top: 5, right: 5 }}
                     />
                     <Text h1 style={{ position: 'absolute', bottom: 5, width: '100%', color: 'white' }}>{randomRecipe.strMeal}</Text>

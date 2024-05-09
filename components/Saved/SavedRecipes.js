@@ -50,7 +50,7 @@ export default function SavedRecipes({ navigation }) {
     } else {
         return (
             <ScrollView>
-                <Button title="refresh" onPress={refresh} />
+                <Button icon={{ name: 'refresh', color: 'white' }} title="Refresh" onPress={refresh} />
                 <View>
                     {
                         savedRecipesList.map((recipe, i) => (
