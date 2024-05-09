@@ -9,7 +9,6 @@ export default function SaveExistingRecipe({ id }) {
 
     const checkSave = () => {
         savedRecipeExists(id, rowsAffected => {
-            //console.log('Rows affected:', rowsAffected);
             if (rowsAffected === 0) {
                 setAlreadySaved(false);
             } else {
@@ -21,12 +20,9 @@ export default function SaveExistingRecipe({ id }) {
     const toggleCheckbox = () => {
         if (alreadySaved) {
             deleteSavedRecipe(id);
-            console.log('should delete')
             setAlreadySaved(false);
         } else {
-            console.log(id);
             saveRecipe(id);
-            console.log('should save')
             setAlreadySaved(true);
         }
     };

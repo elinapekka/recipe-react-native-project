@@ -3,15 +3,14 @@ import { Button, Dialog, Input } from '@rneui/themed';
 import { editShoppingListItem } from '../../databases+apis/shoppinglistDB';
 
 
-export default function EditShoppingListItem({update, itemInfo, reset}) {
+export default function EditShoppingListItem({ update, itemInfo, reset }) {
 
-    const [selectedItem, setSelectedItem] = useState({ });
+    const [selectedItem, setSelectedItem] = useState({});
 
     const [dialogVisible, setDialogVisible] = useState(false);
     const openDialog = () => {
         setDialogVisible(true);
         setSelectedItem(itemInfo);
-        console.log(selectedItem)
     }
     const closeDialog = () => {
         setDialogVisible(false);
@@ -19,7 +18,9 @@ export default function EditShoppingListItem({update, itemInfo, reset}) {
 
     const onSave = async () => {
         try {
-            console.log(selectedItem);
+            if (selectedItem.price === '') {
+                setSelectedItem({ ...selectedItem, price: '0' });
+            }
             editShoppingListItem(selectedItem);
             update();
             closeDialog();
@@ -29,9 +30,9 @@ export default function EditShoppingListItem({update, itemInfo, reset}) {
         }
     };
 
-    return ( 
+    return (
         <>
-            <Button 
+            <Button
                 title="Edit"
                 onPress={() => {
                     openDialog();
@@ -44,12 +45,12 @@ export default function EditShoppingListItem({update, itemInfo, reset}) {
                 isVisible={dialogVisible}
                 onBackdropPress={closeDialog}
             >
-                <Dialog.Title title="Add shopping list item"/>
+                <Dialog.Title title="Add shopping list item" />
                 <Input
                     value={selectedItem.item}
                     placeholder="Name"
                     //leftIcon={{ type: 'font-awesome', name: 'comment' }}
-                    onChangeText={value => setSelectedItem({...selectedItem, item: value})}
+                    onChangeText={value => setSelectedItem({ ...selectedItem, item: value })}
                 />
                 <Input
                     value={selectedItem.amount}
@@ -58,8 +59,9 @@ export default function EditShoppingListItem({update, itemInfo, reset}) {
                     onChangeText={value => setSelectedItem({ ...selectedItem, amount: value })}
                 />
                 <Input
-                    value={selectedItem.price === null ? null : String(selectedItem.price)}
+                    value={selectedItem.price === 0 ? '' : String(selectedItem.price)}
                     placeholder="Price (optional)"
+                    keyboardType='numeric'
                     //leftIcon={{ type: 'font-awesome', name: 'comment' }}
                     onChangeText={value => setSelectedItem({ ...selectedItem, price: value })}
                 />

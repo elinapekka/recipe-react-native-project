@@ -27,7 +27,6 @@ export default function SearchResult({ searchMethod, searchCriteria, navigation 
 
     const openRecipe = (idMeal) => {
         return () => {
-            console.log(idMeal)
             navigation.navigate('SelectedRecipe', { idMeal: idMeal });
         };
     }

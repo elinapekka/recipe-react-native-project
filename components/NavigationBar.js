@@ -6,7 +6,7 @@ import { SearchPickScreen, SearchCategoryScreen, SearchAreaScreen, RecipeSearchR
 import ShoppingListScreen from '../screens/ShoppingListScreen';
 import SavedScreen from '../screens/SavedScreen';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import SearchResult from './RecipeSearch/SearchResults';
+//import SearchResult from './RecipeSearch/SearchResults';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -15,9 +15,8 @@ function HomeStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="HomeScreen" options={{ headerShown: false }} component={HomeScreen} />
-      <Stack.Screen name="SelectedRecipeHome" options={{ headerShown: false }} component={SelectedRecipeScreen} />
-      <Stack.Screen name="CategoryResultHome" options={{ headerShown: false }} component={SearchResult} />
-      <Stack.Screen name="ShoppingListHome" options={{ headerShown: false }} component={ShoppingListScreen} />
+      <Stack.Screen name="SearchResult" options={{ headerShown: false }} component={RecipeSearchResultsScreen} />
+      <Stack.Screen name="SelectedRecipe" options={{ headerShown: false }} component={SelectedRecipeScreen} />
     </Stack.Navigator>
   )
 }
@@ -48,6 +47,7 @@ export default function NavigationBar() {
   const screenOptions = ({ route }) => ({
     tabBarIcon: ({ focused, color, size }) => {
       let iconName;
+      let iconColor = focused ? '#60AC98' : color; 
 
       if (route.name === 'Home') {
         iconName = 'home';
@@ -59,7 +59,11 @@ export default function NavigationBar() {
         iconName = 'heart'
       }
 
-      return <Ionicons name={iconName} size={size} color={color} />;
+      return <Ionicons name={iconName} size={size} color={iconColor} />;
+    },
+    tabBarLabelStyle: {
+      color: 'gray', // Set the default color for tab labels
+      fontWeight: 'bold' // You can also customize other label styles here
     }
   });
 

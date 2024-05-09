@@ -10,16 +10,4 @@ const viewStyles = StyleSheet.create({
     },
 })
 
-const textStyles = StyleSheet.create({
-    titles: {
-        marginTop:"auto", 
-        marginBottom:"auto", 
-        marginLeft: "auto", 
-        width: "80%", 
-        textAlign: "left",
-        fontSize: 20,
-    }
-});
-  
-
-export { viewStyles, textStyles}
+export { viewStyles }

@@ -29,7 +29,6 @@ const savedRecipeExists = (id, callback) => {
 const saveRecipe = (id) => {
     savedRecipeExists(id, rowsAffected => {
         //console.log('Rows affected:', rowsAffected);
-        console.log(id);
         if (rowsAffected === 0 && id ) {
             db.transaction(tx => {
                 tx.executeSql('INSERT INTO savedrecipes (id) values (?);',

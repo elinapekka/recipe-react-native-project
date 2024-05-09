@@ -31,7 +31,7 @@ export default function AddShoppingListItem({updateShoppingList}) {
     return ( 
         <>
             <Button 
-                //style={{width: 100}}
+                style={{paddingLeft: 10}}
                 onPress={openDialog}
             >
                 <Icon name="add" color="white" />
@@ -54,6 +54,7 @@ export default function AddShoppingListItem({updateShoppingList}) {
                 />
                 <Input
                     placeholder="Price (optional)"
+                    keyboardType='numeric'
                     //leftIcon={{ type: 'font-awesome', name: 'comment' }}
                     onChangeText={value => setNewItem({ ...newItem, price: value })}
                 />

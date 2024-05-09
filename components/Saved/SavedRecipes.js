@@ -11,7 +11,6 @@ export default function SavedRecipes({ navigation }) {
 
     const update = () => {
         updateSavedRecipes(setSavedRecipesList);
-        console.log(savedRecipesList)
     }
 
     const refreshDataArray = useCallback(() => {

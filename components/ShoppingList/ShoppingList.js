@@ -64,29 +64,29 @@ export default function ShoppingList() {
         getTotalPrice();
     }, [shoppingList]);
 
-
+    /* 
+        <Button
+            onPress={() => update()}
+            buttonStyle={{ backgroundColor: '#EDB41F' }}
+            //style={{width: '50%'}}
+        >
+            <Icon name="refresh" color="white" />
+            Refresh
+        </Button>
+    */
     return (
         <ScrollView>
             <View style={viewStyles.rowView}>
-                <View>
+                <View style={{ padding: 10 }}>
                     <Text>Checked items: {checkedItemsAmount} / {shoppingList.length}</Text>
                     <Text>Total price: {totalPrice} €</Text>
                 </View>
-                <View style={{ marginLeft: 'auto', }}>
-                    <Button
-                        onPress={() => update()}
-                        buttonStyle={{ backgroundColor: '#EDB41F' }}
-                        //style={{width: '50%'}}
-                    >
-                        <Icon name="refresh" color="white" />
-                        Refresh
-                    </Button>
-                    
+                <View style={{ ...viewStyles.rowView, marginRight: 'auto' }}>
                     <DeleteAllShoppingListItems deleteAllItems={deleteAllItems} />
+                    <AddShoppingListItem updateShoppingList={update} />
                 </View>
 
             </View>
-            <AddShoppingListItem updateShoppingList={update} />
             <View>
                 {
                     shoppingList.map((l, i) => (
@@ -98,7 +98,6 @@ export default function ShoppingList() {
                                     reset={reset}
                                 />
                             )}
-
                             rightContent={(reset) => (
                                 <Button
                                     title="Delete"
@@ -114,6 +113,7 @@ export default function ShoppingList() {
                             )}
                             key={i}
                             bottomDivider
+                        //containerStyle={{ backgroundColor: l.checked === 1 ? 'lightgray' : 'white' }}
                         >
                             <ListItem.Content>
                                 <View style={{ flexDirection: 'row', width: '100%', alignItems: 'center' }}>
@@ -122,10 +122,11 @@ export default function ShoppingList() {
                                         onPress={toggleCheckbox(l)}
                                         iconType="material-community"
                                         checkedIcon="checkbox-outline"
-                                        uncheckedIcon={'checkbox-blank-outline'}
+                                        uncheckedIcon="checkbox-blank-outline"
+                                    //containerStyle={{ backgroundColor: 'none' }}
                                     />
                                     <View style={{ marginRight: 'auto' }}>
-                                        <ListItem.Title>
+                                        <ListItem.Title style={{ textDecorationLine: l.checked === 1 ? 'line-through' : 'none' }}>
                                             {l.amount ? `${l.amount} ${l.item}` : l.item}
                                         </ListItem.Title>
                                         <ListItem.Subtitle>{l.price.toFixed(2)}€</ListItem.Subtitle>

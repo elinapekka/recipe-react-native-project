@@ -17,7 +17,6 @@ export default function SavedRecipeItem({itemId, openRecipe, update}) {
     useEffect(() => {
         if (itemId) {
             fetchData();
-            console.log(itemId)
         }
     }, [])
 

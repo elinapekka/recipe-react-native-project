@@ -31,14 +31,14 @@ const theme = createTheme({
     },
     Card: {
       wrapperStyle: {
-        //backgroundColor: 'blue',
+        // backgroundColor: 'blue',
         padding: 5,
         paddingBottom: 0,
         margin: 0,
       },
       containerStyle: {
         padding: 10,
-        margin: 0
+        margin: 0,
       },
     },
     FAB: {
@@ -47,7 +47,7 @@ const theme = createTheme({
       },
     },
     Button: {
-      color: '#60AC98'
+      color: colors.accent2
     }
   },
 });

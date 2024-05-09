@@ -9,7 +9,7 @@ export default function IndividualIngredient ({item}) {
 
 
     const addToShoppingList = (ingredient, measurement) => {
-        saveShoppingListItem({item: ingredient, amount: measurement, checked: false, price: 0});
+        saveShoppingListItem({item: ingredient, amount: measurement, checked: false, price: '0'});
         setAdded(true);
     }
 

@@ -27,7 +27,7 @@ export default function RecipeSuggestion({ navigation }) {
     }, []);
 
     return (
-        <TouchableOpacity onPress={() => navigation.navigate('SelectedRecipeHome', { idMeal: randomRecipe.idMeal })}>
+        <TouchableOpacity onPress={() => navigation.navigate('SelectedRecipe', { idMeal: randomRecipe.idMeal })}>
             <View>
                 <View style={{ aspectRatio: 15 / 20 }}>
                     <Image

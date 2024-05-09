@@ -22,7 +22,6 @@ export default function IndividualRecipe({ idMeal, navigation }) {
 
     useEffect(() => {
         fetchData();
-        console.log(recipeInfo)
     }, [])
 
     return (
