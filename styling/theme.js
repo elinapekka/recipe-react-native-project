@@ -1,19 +1,16 @@
 import { createTheme } from '@rneui/themed';
-import colors from './colors';
+
+const colors = {
+  backgroundColor: 'beige',
+  primary: 'red',
+  accent1: '#EDB41F',
+  accent2: '#60AC98',
+  secondary: 'pink',
+  textColor: 'white',
+  iconColor: 'white',
+}
 
 const theme = createTheme({
-  /*
-  lightColors: {
-    tertiary: '#124789',
-    accent: '#f98652',
-    surface: '#0990763',
-  },
-  darkColors: {
-    tertiary: '#124789',
-    accent: '#908652',
-    surface: '#0990763',
-  },
-  */
   components: {
     Text: {
       h1Style: {
@@ -44,38 +41,9 @@ const theme = createTheme({
         margin: 0
       },
     },
-
-    ListItem: {
-      Swipeable: {
-
-      },
-      variants: {
-        biggerRecipeSearch: {
-          containerStyle: {
-            backgroundColor: colors.backgroundColor,
-          },
-        }
-      },
-    },
-
-    SearchBar: { // https://reactnativeelements.com/docs/components/searchbar
-      inputStyle: {
-        color: colors.textColor,
-      },
-      placeholderTextColor: colors.textColor,
-      rightIconContainerStyle: {
-        color: colors.iconColor,
-      },
-      searchIcon: {
-        color: colors.iconColor,
-      },
-      clearIcon: {
-        color: colors.iconColor,
-      },
-    },
     FAB: {
       buttonStyle: {
-        backgroundColor: '#EDB41F'
+        backgroundColor: colors.accent1,
       },
     },
     Button: {

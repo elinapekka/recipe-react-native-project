@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/HomeScreen';
-import { SearchPickScreen, SearchCategoryScreen, SearchAreaScreen, SearchIngredientsScreen, RecipeSearchResultsScreen, SelectedRecipeScreen } from '../screens/RecipeSearchScreen';
+import { SearchPickScreen, SearchCategoryScreen, SearchAreaScreen, RecipeSearchResultsScreen, SelectedRecipeScreen } from '../screens/RecipeSearchScreen';
 import ShoppingListScreen from '../screens/ShoppingListScreen';
 import SavedScreen from '../screens/SavedScreen';
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -28,7 +28,6 @@ function RecipeStack() {
       <Stack.Screen name="SearchPick" options={{ headerShown: false }} component={SearchPickScreen} />
       <Stack.Screen name="SearchCategories" options={{ headerShown: false }} component={SearchCategoryScreen} />
       <Stack.Screen name="SearchAreas" options={{ headerShown: false }} component={SearchAreaScreen} />
-      <Stack.Screen name="SearchIngredients" options={{ headerShown: false }} component={SearchIngredientsScreen} />
       <Stack.Screen name="SearchResult" options={{ headerShown: false }} component={RecipeSearchResultsScreen} />
       <Stack.Screen name="SelectedRecipe" options={{ headerShown: false }} component={SelectedRecipeScreen} />
     </Stack.Navigator>

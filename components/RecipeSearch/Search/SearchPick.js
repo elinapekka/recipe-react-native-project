@@ -15,11 +15,6 @@ export default function SearchPick({ navigation }) {
                     <Card.Title h3>Search by area</Card.Title>
                 </Card>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('SearchIngredients')}>
-                <Card>
-                    <Card.Title h3>Search by ingredient(s)</Card.Title>
-                </Card>
-            </TouchableOpacity>
         </ScrollView>
     )
 };

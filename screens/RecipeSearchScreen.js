@@ -3,7 +3,6 @@ import SearchResult from '../components/RecipeSearch/SearchResults';
 import IndividualRecipe from '../components/RecipeSearch/SingleRecipe/IndividualRecipe';
 import SearchPick from '../components/RecipeSearch/Search/SearchPick';
 import SearchCategory from '../components/RecipeSearch/Search/SearchCategory';
-import SearchIngredients from '../components/RecipeSearch/Search/SearchIngredients';
 import SearchArea from '../components/RecipeSearch/Search/SearchArea';
 
 /*
@@ -40,14 +39,6 @@ function SearchAreaScreen({ navigation }) {
     );
 }
 
-function SearchIngredientsScreen({ navigation }) {
-    return (
-        <View>
-            <SearchIngredients navigation={navigation} />
-        </View>
-    );
-}
-
 function RecipeSearchResultsScreen({ route, navigation }) {
     const { searchMethod, searchCriteria } = route.params;
     return (
@@ -66,4 +57,4 @@ function SelectedRecipeScreen({ route, navigation }) {
     )
 }
 
-export { SearchPickScreen, SearchCategoryScreen, SearchAreaScreen, SearchIngredientsScreen, RecipeSearchResultsScreen, SelectedRecipeScreen };
+export { SearchPickScreen, SearchCategoryScreen, SearchAreaScreen, RecipeSearchResultsScreen, SelectedRecipeScreen };
