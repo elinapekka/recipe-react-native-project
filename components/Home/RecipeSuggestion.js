@@ -29,7 +29,7 @@ export default function RecipeSuggestion({ navigation }) {
     return (
         <TouchableOpacity onPress={() => navigation.navigate('SelectedRecipe', { idMeal: randomRecipe.idMeal })}>
             <View>
-                <View style={{ aspectRatio: 15 / 20 }}>
+                <View style={{ aspectRatio: 13 / 14 }}>
                     <Image
                         style={{ flex: 1, width: undefined, height: undefined }}
                         resizeMode="cover"
