@@ -5,7 +5,6 @@ import { Card, Button, Text } from '@rneui/themed';
 export default function StepsList({instructionsString}) {
     const [instructions, setInstructions] = useState([]);
 
-    //apam balik
     useEffect(() => {
         let tempInstructions = String(instructionsString).split('\n');
         tempInstructions = tempInstructions.map(item => item.trim());

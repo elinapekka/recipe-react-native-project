@@ -16,6 +16,7 @@ export default function ShoppingList() {
 
     const update = () => {
         updateShoppingList(setShoppingList);
+       //console.log(shoppingList);
     }
 
     const deleteItem = (id) => {
@@ -24,16 +25,19 @@ export default function ShoppingList() {
     }
 
     const toggleCheckbox = (l) => {
-        return () => {
+        //console.log('Initial state:', l.checked);
+        let updatedChecked = !l.checked;
+        //console.log("New state:", updatedChecked)
+        
             editShoppingListItem({
                 id: l.id,
                 item: l.item,
                 amount: l.amount,
-                checked: l.checked === 1 ? false : true,
+                checked: updatedChecked ? 1 : 0,
                 price: l.price
             });
             update();
-        };
+
     };
 
     const getTotalPrice = () => {
@@ -119,11 +123,11 @@ export default function ShoppingList() {
                                 <View style={{ flexDirection: 'row', width: '100%', alignItems: 'center' }}>
                                     <CheckBox
                                         checked={l.checked === 1 ? true : false}
-                                        onPress={toggleCheckbox(l)}
+                                        onPress={() => toggleCheckbox(l)}
                                         iconType="material-community"
                                         checkedIcon="checkbox-outline"
                                         uncheckedIcon="checkbox-blank-outline"
-                                    //containerStyle={{ backgroundColor: 'none' }}
+                                        //containerStyle={{ backgroundColor: 'none' }}
                                     />
                                     <View style={{ marginRight: 'auto' }}>
                                         <ListItem.Title style={{ textDecorationLine: l.checked === 1 ? 'line-through' : 'none' }}>
